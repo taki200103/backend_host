@@ -1,11 +1,23 @@
 version: '3.8'
+
 services:
+  app:
+    build: .
+    container_name: blumoon-backend
+    restart: unless-stopped
+    depends_on:
+      - db
+    env_file:
+      - .env
+    ports:
+      - '3000:3000'
+
   db:
-    image: postgres:15
+    image: postgres:17
     restart: unless-stopped
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 123456
+      POSTGRES_PASSWORD: 200103
       POSTGRES_DB: BlueMoon
     ports:
       - '5432:5432'
