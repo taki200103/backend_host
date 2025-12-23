@@ -21,7 +21,7 @@ export class CreateShiftDto {
   @ApiProperty({ description: 'ID của bảo vệ' })
   @IsString()
   @IsNotEmpty()
-  policeId: string;
+  guardId: string;
 }
 
 export class UpdateShiftDto {
@@ -35,7 +35,7 @@ export class UpdateShiftDto {
 
   @ApiProperty({ description: 'ID của bảo vệ', required: false })
   @IsString()
-  policeId?: string;
+  guardId?: string;
 }
 
 export class ShiftResponseDto {
@@ -49,10 +49,10 @@ export class ShiftResponseDto {
   shiftType: string;
 
   @ApiProperty()
-  policeId: string;
+  guardId: string;
 
   @ApiProperty()
-  police?: {
+  guard?: {
     id: string;
     fullName: string;
     email: string;

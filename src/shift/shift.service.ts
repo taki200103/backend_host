@@ -13,16 +13,16 @@ export class ShiftService {
   }
 
   async create(data: CreateShiftDto) {
-    // Kiểm tra bảo vệ có tồn tại và có role là 'police' không
-    const police = await this.db.resident.findUnique({
-      where: { id: data.policeId },
+    // Kiểm tra bảo vệ có tồn tại và có role là 'guard' không
+    const guard = await this.db.resident.findUnique({
+      where: { id: data.guardId },
     });
 
-    if (!police) {
+    if (!guard) {
       throw new NotFoundException('Không tìm thấy bảo vệ');
     }
 
-    if (police.role.toLowerCase() !== 'police') {
+    if (guard.role.toLowerCase() !== 'guard') {
       throw new BadRequestException('Người được phân công phải là bảo vệ');
     }
 
@@ -48,10 +48,10 @@ export class ShiftService {
       data: {
         date: date,
         shiftType: data.shiftType,
-        policeId: data.policeId,
+        guardId: data.guardId,
       },
       include: {
-        police: {
+        guard: {
           select: {
             id: true,
             fullName: true,
@@ -83,7 +83,7 @@ export class ShiftService {
     return await this.db.shift.findMany({
       where,
       include: {
-        police: {
+        guard: {
           select: {
             id: true,
             fullName: true,
@@ -102,7 +102,7 @@ export class ShiftService {
     const shift = await this.db.shift.findUnique({
       where: { id },
       include: {
-        police: {
+        guard: {
           select: {
             id: true,
             fullName: true,
@@ -129,17 +129,17 @@ export class ShiftService {
       throw new NotFoundException('Không tìm thấy ca trực');
     }
 
-    if (data.policeId) {
-      // Kiểm tra bảo vệ có tồn tại và có role là 'police' không
-      const police = await this.db.resident.findUnique({
-        where: { id: data.policeId },
+    if (data.guardId) {
+      // Kiểm tra bảo vệ có tồn tại và có role là 'guard' không
+      const guard = await this.db.resident.findUnique({
+        where: { id: data.guardId },
       });
 
-      if (!police) {
+      if (!guard) {
         throw new NotFoundException('Không tìm thấy bảo vệ');
       }
 
-      if (police.role.toLowerCase() !== 'police') {
+      if (guard.role.toLowerCase() !== 'guard') {
         throw new BadRequestException('Người được phân công phải là bảo vệ');
       }
     }
@@ -174,12 +174,12 @@ export class ShiftService {
     return await this.db.shift.update({
       where: { id },
       data: {
-        ...(data.policeId && { policeId: data.policeId }),
+        ...(data.guardId && { guardId: data.guardId }),
         ...(data.date !== undefined && { date: newDate }),
         ...(data.shiftType !== undefined && { shiftType: newShiftType }),
       },
       include: {
-        police: {
+        guard: {
           select: {
             id: true,
             fullName: true,
@@ -205,10 +205,10 @@ export class ShiftService {
     });
   }
 
-  async getPoliceList() {
+  async getGuardList() {
     return await this.db.resident.findMany({
       where: {
-        role: 'police',
+        role: 'guard',
       },
       select: {
         id: true,

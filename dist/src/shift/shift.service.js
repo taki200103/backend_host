@@ -21,13 +21,13 @@ let ShiftService = class ShiftService {
         return this.prisma;
     }
     async create(data) {
-        const police = await this.db.resident.findUnique({
-            where: { id: data.policeId },
+        const guard = await this.db.resident.findUnique({
+            where: { id: data.guardId },
         });
-        if (!police) {
+        if (!guard) {
             throw new common_1.NotFoundException('Không tìm thấy bảo vệ');
         }
-        if (police.role.toLowerCase() !== 'police') {
+        if (guard.role.toLowerCase() !== 'guard') {
             throw new common_1.BadRequestException('Người được phân công phải là bảo vệ');
         }
         const date = new Date(data.date);
@@ -47,10 +47,10 @@ let ShiftService = class ShiftService {
             data: {
                 date: date,
                 shiftType: data.shiftType,
-                policeId: data.policeId,
+                guardId: data.guardId,
             },
             include: {
-                police: {
+                guard: {
                     select: {
                         id: true,
                         fullName: true,
@@ -79,7 +79,7 @@ let ShiftService = class ShiftService {
         return await this.db.shift.findMany({
             where,
             include: {
-                police: {
+                guard: {
                     select: {
                         id: true,
                         fullName: true,
@@ -97,7 +97,7 @@ let ShiftService = class ShiftService {
         const shift = await this.db.shift.findUnique({
             where: { id },
             include: {
-                police: {
+                guard: {
                     select: {
                         id: true,
                         fullName: true,
@@ -119,14 +119,14 @@ let ShiftService = class ShiftService {
         if (!shift) {
             throw new common_1.NotFoundException('Không tìm thấy ca trực');
         }
-        if (data.policeId) {
-            const police = await this.db.resident.findUnique({
-                where: { id: data.policeId },
+        if (data.guardId) {
+            const guard = await this.db.resident.findUnique({
+                where: { id: data.guardId },
             });
-            if (!police) {
+            if (!guard) {
                 throw new common_1.NotFoundException('Không tìm thấy bảo vệ');
             }
-            if (police.role.toLowerCase() !== 'police') {
+            if (guard.role.toLowerCase() !== 'guard') {
                 throw new common_1.BadRequestException('Người được phân công phải là bảo vệ');
             }
         }
@@ -153,12 +153,12 @@ let ShiftService = class ShiftService {
         return await this.db.shift.update({
             where: { id },
             data: {
-                ...(data.policeId && { policeId: data.policeId }),
+                ...(data.guardId && { guardId: data.guardId }),
                 ...(data.date !== undefined && { date: newDate }),
                 ...(data.shiftType !== undefined && { shiftType: newShiftType }),
             },
             include: {
-                police: {
+                guard: {
                     select: {
                         id: true,
                         fullName: true,
@@ -180,10 +180,10 @@ let ShiftService = class ShiftService {
             where: { id },
         });
     }
-    async getPoliceList() {
+    async getGuardList() {
         return await this.db.resident.findMany({
             where: {
-                role: 'police',
+                role: 'guard',
             },
             select: {
                 id: true,
