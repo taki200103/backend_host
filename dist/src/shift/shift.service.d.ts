@@ -5,77 +5,49 @@ export declare class ShiftService {
     constructor(prisma: PrismaService);
     private get db();
     create(data: CreateShiftDto): Promise<{
-        guard: {
-            id: string;
-            fullName: string;
-            phone: string;
-            email: string;
-        };
-    } & {
+        date: Date;
+        shiftType: string;
         id: string;
         createdAt: Date;
         updatedAt: Date;
-        date: Date;
-        shiftType: string;
-        guardId: string;
+        policeId: string;
     }>;
-    findAll(startDate?: string, endDate?: string): Promise<({
-        guard: {
-            id: string;
-            fullName: string;
-            phone: string;
-            email: string;
-        };
-    } & {
+    findAll(startDate?: string, endDate?: string): Promise<{
+        date: Date;
+        shiftType: string;
         id: string;
         createdAt: Date;
         updatedAt: Date;
-        date: Date;
-        shiftType: string;
-        guardId: string;
-    })[]>;
+        policeId: string;
+    }[]>;
     findOne(id: string): Promise<{
-        guard: {
-            id: string;
-            fullName: string;
-            phone: string;
-            email: string;
-        };
-    } & {
+        date: Date;
+        shiftType: string;
         id: string;
         createdAt: Date;
         updatedAt: Date;
-        date: Date;
-        shiftType: string;
-        guardId: string;
+        policeId: string;
     }>;
     update(id: string, data: UpdateShiftDto): Promise<{
-        guard: {
-            id: string;
-            fullName: string;
-            phone: string;
-            email: string;
-        };
-    } & {
+        date: Date;
+        shiftType: string;
         id: string;
         createdAt: Date;
         updatedAt: Date;
-        date: Date;
-        shiftType: string;
-        guardId: string;
+        policeId: string;
     }>;
     remove(id: string): Promise<{
+        date: Date;
+        shiftType: string;
         id: string;
         createdAt: Date;
         updatedAt: Date;
-        date: Date;
-        shiftType: string;
-        guardId: string;
+        policeId: string;
     }>;
     getGuardList(): Promise<{
-        id: string;
         fullName: string;
         phone: string;
         email: string;
+        id: string;
     }[]>;
 }

@@ -5,39 +5,38 @@ export declare class ResidentController {
     constructor(service: ResidentService);
     create(data: CreateResidentDto): Promise<{
         apartment: {
+            id: string;
             name: string;
             contractStartDate: Date;
             contractEndDate: Date;
             ownerId: string;
             area: number;
-            id: string;
         } | null;
         notifications: {
             residentId: string;
             notificationId: string;
         }[];
         invoices: {
-            name: string;
             id: string;
-            residentId: string;
             createdAt: Date;
+            name: string;
+            residentId: string;
             serviceId: number;
             money: number;
             status: string;
         }[];
         complains: {
             title: string;
-            id: string;
             message: string;
-            residentId: string;
+            id: string;
             createdAt: Date;
+            updatedAt: Date;
+            residentId: string;
             status: string;
             responseText: string | null;
             targetRole: string;
-            updatedAt: Date;
         }[];
     } & {
-        id: string;
         apartmentId: string | null;
         fullName: string;
         phone: string;
@@ -47,43 +46,43 @@ export declare class ResidentController {
         temporaryStatus: boolean;
         idNumber: string;
         birthDate: Date;
+        id: string;
         approved: boolean;
     }>;
     findAll(): import("@prisma/client").Prisma.PrismaPromise<({
         apartment: {
+            id: string;
             name: string;
             contractStartDate: Date;
             contractEndDate: Date;
             ownerId: string;
             area: number;
-            id: string;
         } | null;
         notifications: {
             residentId: string;
             notificationId: string;
         }[];
         invoices: {
-            name: string;
             id: string;
-            residentId: string;
             createdAt: Date;
+            name: string;
+            residentId: string;
             serviceId: number;
             money: number;
             status: string;
         }[];
         complains: {
             title: string;
-            id: string;
             message: string;
-            residentId: string;
+            id: string;
             createdAt: Date;
+            updatedAt: Date;
+            residentId: string;
             status: string;
             responseText: string | null;
             targetRole: string;
-            updatedAt: Date;
         }[];
     } & {
-        id: string;
         apartmentId: string | null;
         fullName: string;
         phone: string;
@@ -93,43 +92,43 @@ export declare class ResidentController {
         temporaryStatus: boolean;
         idNumber: string;
         birthDate: Date;
+        id: string;
         approved: boolean;
     })[]>;
     findOne(id: string): import("@prisma/client").Prisma.Prisma__ResidentClient<({
         apartment: {
+            id: string;
             name: string;
             contractStartDate: Date;
             contractEndDate: Date;
             ownerId: string;
             area: number;
-            id: string;
         } | null;
         notifications: {
             residentId: string;
             notificationId: string;
         }[];
         invoices: {
-            name: string;
             id: string;
-            residentId: string;
             createdAt: Date;
+            name: string;
+            residentId: string;
             serviceId: number;
             money: number;
             status: string;
         }[];
         complains: {
             title: string;
-            id: string;
             message: string;
-            residentId: string;
+            id: string;
             createdAt: Date;
+            updatedAt: Date;
+            residentId: string;
             status: string;
             responseText: string | null;
             targetRole: string;
-            updatedAt: Date;
         }[];
     } & {
-        id: string;
         apartmentId: string | null;
         fullName: string;
         phone: string;
@@ -139,43 +138,43 @@ export declare class ResidentController {
         temporaryStatus: boolean;
         idNumber: string;
         birthDate: Date;
+        id: string;
         approved: boolean;
     }) | null, null, import("@prisma/client/runtime/library").DefaultArgs, import("@prisma/client").Prisma.PrismaClientOptions>;
     update(id: string, data: UpdateResidentDto): Promise<{
         apartment: {
+            id: string;
             name: string;
             contractStartDate: Date;
             contractEndDate: Date;
             ownerId: string;
             area: number;
-            id: string;
         } | null;
         notifications: {
             residentId: string;
             notificationId: string;
         }[];
         invoices: {
-            name: string;
             id: string;
-            residentId: string;
             createdAt: Date;
+            name: string;
+            residentId: string;
             serviceId: number;
             money: number;
             status: string;
         }[];
         complains: {
             title: string;
-            id: string;
             message: string;
-            residentId: string;
+            id: string;
             createdAt: Date;
+            updatedAt: Date;
+            residentId: string;
             status: string;
             responseText: string | null;
             targetRole: string;
-            updatedAt: Date;
         }[];
     } & {
-        id: string;
         apartmentId: string | null;
         fullName: string;
         phone: string;
@@ -185,43 +184,43 @@ export declare class ResidentController {
         temporaryStatus: boolean;
         idNumber: string;
         birthDate: Date;
+        id: string;
         approved: boolean;
     }>;
     approve(id: string): Promise<{
         apartment: {
+            id: string;
             name: string;
             contractStartDate: Date;
             contractEndDate: Date;
             ownerId: string;
             area: number;
-            id: string;
         } | null;
         notifications: {
             residentId: string;
             notificationId: string;
         }[];
         invoices: {
-            name: string;
             id: string;
-            residentId: string;
             createdAt: Date;
+            name: string;
+            residentId: string;
             serviceId: number;
             money: number;
             status: string;
         }[];
         complains: {
             title: string;
-            id: string;
             message: string;
-            residentId: string;
+            id: string;
             createdAt: Date;
+            updatedAt: Date;
+            residentId: string;
             status: string;
             responseText: string | null;
             targetRole: string;
-            updatedAt: Date;
         }[];
     } & {
-        id: string;
         apartmentId: string | null;
         fullName: string;
         phone: string;
@@ -231,43 +230,43 @@ export declare class ResidentController {
         temporaryStatus: boolean;
         idNumber: string;
         birthDate: Date;
+        id: string;
         approved: boolean;
     }>;
     toggleTemporaryStatus(id: string): Promise<{
         apartment: {
+            id: string;
             name: string;
             contractStartDate: Date;
             contractEndDate: Date;
             ownerId: string;
             area: number;
-            id: string;
         } | null;
         notifications: {
             residentId: string;
             notificationId: string;
         }[];
         invoices: {
-            name: string;
             id: string;
-            residentId: string;
             createdAt: Date;
+            name: string;
+            residentId: string;
             serviceId: number;
             money: number;
             status: string;
         }[];
         complains: {
             title: string;
-            id: string;
             message: string;
-            residentId: string;
+            id: string;
             createdAt: Date;
+            updatedAt: Date;
+            residentId: string;
             status: string;
             responseText: string | null;
             targetRole: string;
-            updatedAt: Date;
         }[];
     } & {
-        id: string;
         apartmentId: string | null;
         fullName: string;
         phone: string;
@@ -277,10 +276,10 @@ export declare class ResidentController {
         temporaryStatus: boolean;
         idNumber: string;
         birthDate: Date;
+        id: string;
         approved: boolean;
     }>;
     remove(id: string): Promise<{
-        id: string;
         apartmentId: string | null;
         fullName: string;
         phone: string;
@@ -290,6 +289,7 @@ export declare class ResidentController {
         temporaryStatus: boolean;
         idNumber: string;
         birthDate: Date;
+        id: string;
         approved: boolean;
     }>;
 }
